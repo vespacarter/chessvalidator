@@ -105,7 +105,7 @@ class King < Piece
 			movement = true
 		elsif @start_row == @end_row && ((@start_col - @end_col)**2) == 1
 			movement = true
-		elsif ((@start_col - @end_col)**2) == ((@start_row - @end_row)**2)
+		elsif ((@start_col - @end_col)**2) == ((@start_row - @end_row)**2) && ((@start_row - @end_row)**2) == 1
 			movement = true
 		else
 			movement = false
