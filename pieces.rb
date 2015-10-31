@@ -33,6 +33,17 @@ end
 
 #caballo
 class Knight < Piece
+	def movement_checker?(start_position,end_position)
+		coordenates_deconstructor(start_position,end_position)
+		#Knights does L movement
+		movement = false
+		if (@start_col - @end_col)**2 == 4 && (@start_row - @end_row)**2 == 1 
+				movement = true
+		elsif (@start_row - @end_row)**2 == 4 && (@start_col - @end_col)**2 == 1 
+				movement = true
+		end
+		movement
+	end
 
 end
 
