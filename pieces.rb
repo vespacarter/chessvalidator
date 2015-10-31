@@ -14,7 +14,21 @@ end
 
 #peon
 class Pawn < Piece
-
+def movement_checker?(start_position,end_position)
+		coordenates_deconstructor(start_position,end_position)
+		#white Pawn moves up one step, black moves down one step
+		movement = true
+		if @start_col != @end_col
+			movement = false
+		elsif ((@start_row - @end_row)**2) != 1 
+			movement = false
+		elsif @color == "w" && (@start_row - @end_row) > 0
+			movement = false
+		elsif @color == "b" && (@start_row - @end_row) < 0
+			movement = false
+		end
+		movement
+	end
 end
 
 #caballo
