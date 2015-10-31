@@ -21,16 +21,6 @@ private
 		@loader.board_loader(file,board)
 	end
 
-	def show_board
-		@board.each_with_index do |row, row_index|
-			row.each_with_index do |col, col_index|
-				cols = col_index.to_i
-				rows = row_index.to_i
-				puts "#{rows},#{cols}: #{@board[rows][cols]}"
-			end
-		end
-	end
-
 	def load_movements(file,movements)
 		@movements = @loader.movements_loader(file)
 	end
@@ -41,21 +31,36 @@ private
 			move_array = move.split(" ")
 			start_position = coordenates_converter(move_array[0])
 			end_position = coordenates_converter(move_array[1])
-			piece = get_piece_from_board(start_position)
+			piece = create_piece(start_position)
+			p piece
 		end
 	end
 
 	def get_piece_from_board(position)
-		coordenates = position.split("")
 		col = position[0].to_i
 		row = position[1].to_i
 		piece_string = @board[row][col]
-		puts "piece is #{piece_string[1]}"
-		#piece_string
+		piece_string
 	end
 
+	def create_piece(position)
+		piece = get_piece_from_board(position)
+		piece_color = piece[0]
+		piece_type = piece[1]
+		piece = piece_creator(piece_type,piece_color)
+	end
 
-
+	def piece_creator(type,color)
+		piece = {
+			"P" => Pawn.new(color),
+			"N" => Knight.new(color),
+			"B" => Bishop.new(color),
+			"R" => Rook.new(color),
+			"Q" => Queen.new(color),
+			"K" => King.new(color)
+		}
+		piece[type]
+	end
 
 	def coordenates_converter(string)
 		converted = ""

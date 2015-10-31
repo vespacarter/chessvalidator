@@ -1,29 +1,36 @@
+class Piece
+	def initialize (color)
+		@color = color
+	end
+end
+
+
 #peon
-class Pawn
+class Pawn < Piece
 
 end
 
 #caballo
-class Knight
+class Knight < Piece
 
 end
 
 #alfil
-class Bishop
+class Bishop < Piece
 
 end
 
 #torre
-class Rook
+class Rook < Piece
 
 end
 
 #reina
-class Queen
+class Queen < Piece
 
 end
 
 #rey
-class Rey
+class King < Piece
 
 end
