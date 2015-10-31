@@ -72,5 +72,18 @@ end
 
 #rey
 class King < Piece
-
+	def movement_checker?(start_position,end_position)
+		coordenates_deconstructor(start_position,end_position)
+		#King moves horizontal, vertical, and diagonally, only one step
+		if @start_col == @end_col && ((@start_row - @end_row)**2) == 1
+			movement = true
+		elsif @start_row == @end_row && ((@start_col - @end_col)**2) == 1
+			movement = true
+		elsif ((@start_col - @end_col)**2) == ((@start_row - @end_row)**2)
+			movement = true
+		else
+			movement = false
+		end
+		movement
+	end
 end
