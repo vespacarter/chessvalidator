@@ -31,10 +31,13 @@ private
 			move_array = move.split(" ")
 			start_position = coordenates_converter(move_array[0])
 			end_position = coordenates_converter(move_array[1])
-			piece = create_piece(start_position)
-			status = piece.movement_checker?(start_position,end_position)
-			status ? text = "legal" : text = "illegal"
-			puts "#{piece.class} movement from #{move_array[0]} to #{move_array[1]} is #{text}"
+			unless empty_position?(start_position)
+				piece = create_piece(start_position)
+				status = piece.movement_checker?(start_position,end_position)
+				status ? action = "legal" : action = "illegal"
+				piece.color == "w" ? color = "White" : color = "Black"
+				puts "#{color} #{piece.class} movement from #{move_array[0]} to #{move_array[1]} is #{action}"
+			end
 		end
 	end
 
@@ -62,6 +65,12 @@ private
 			"K" => King.new(color)
 		}
 		piece[type]
+	end
+
+	def empty_position?(position)
+		piece = get_piece_from_board(position)
+		piece == "--" ? empty = true : empty = false
+		empty
 	end
 
 	def coordenates_converter(string)
