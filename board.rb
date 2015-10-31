@@ -1,17 +1,23 @@
 class Board
-	def initialize(loader,file)
+	def initialize(loader,board_file,movements_file)
 		@board = Array.new(8) {Array.new(8)}
-		@board_file = file
+		@movements = []
+		@board_file = board_file
+		@movements_file = movements_file
 		@loader = loader
 	end
 
 	def start
-		load_board(@board_file)
-
+		load_board(@board_file,@board)
+		load_movements(@movements_file,@movements)
 	end
 
-	def load_board(file)
-		@loader.board_loader(file)
+	def load_board(file,board)
+		@loader.board_loader(file,board)
+	end
+
+	def load_movements(file,movements)
+		@loader.movements_loader(file,movements)
 	end
 
 	def check_movements

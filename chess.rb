@@ -3,4 +3,5 @@ require_relative 'pieces.rb'
 require_relative 'loader.rb'
 require_relative 'checker.rb'
 
-board = Board.new(Loader.new,"board.txt")
+myboard = Board.new(Loader.new,"board.txt","movements.txt")
+myboard.start
