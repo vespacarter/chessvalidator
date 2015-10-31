@@ -33,7 +33,8 @@ private
 			end_position = coordenates_converter(move_array[1])
 			piece = create_piece(start_position)
 			status = piece.movement_checker?(start_position,end_position)
-			puts status
+			status ? text = "legal" : text = "illegal"
+			puts "#{piece.class} movement from #{move_array[0]} to #{move_array[1]} is #{text}"
 		end
 	end
 
