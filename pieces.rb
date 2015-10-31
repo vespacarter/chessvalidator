@@ -23,8 +23,19 @@ end
 #torre
 class Rook < Piece
 	def movement_checker(start_position,end_position)
-		puts "Rook start position #{start_position}"
-		puts "Rook end position #{end_position}"
+		#Rook can only move in horizontal or vertical
+		start_col = start_position[0]
+		start_row = start_position[1]
+		end_col = end_position[0]
+		end_row = end_position [0] 
+		if start_col == end_col
+			movement = "Legal"
+		elsif start_row == end_row
+			movement = "Legal"
+		else
+			movement = "Illegal"
+		end
+		movement
 	end
 end
 
