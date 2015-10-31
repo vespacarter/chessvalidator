@@ -34,6 +34,7 @@ private
 			unless empty_position?(start_position)
 				piece = create_piece(start_position)
 				status = piece.movement_checker?(start_position,end_position)
+				status ? status = valid_end_position?(start_position,end_position) : status = status
 				status ? action = "legal" : action = "illegal"
 				piece.color == "w" ? color = "White" : color = "Black"
 				puts "#{color} #{piece.class} movement from #{move_array[0]} to #{move_array[1]} is #{action}"
@@ -71,6 +72,17 @@ private
 		piece = get_piece_from_board(position)
 		piece == "--" ? empty = true : empty = false
 		empty
+	end
+
+	def valid_end_position?(start_position,end_position)
+		if empty_position?(end_position)
+			valid = true
+		elsif create_piece(start_position).color != create_piece(end_position).color
+			valid = true
+		else
+			valid = false
+		end
+		valid
 	end
 
 	def coordenates_converter(string)
