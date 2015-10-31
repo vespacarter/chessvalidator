@@ -32,7 +32,7 @@ private
 			start_position = coordenates_converter(move_array[0])
 			end_position = coordenates_converter(move_array[1])
 			piece = create_piece(start_position)
-			p piece
+			status = piece.movement_checker(start_position,end_position)
 		end
 	end
 

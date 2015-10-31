@@ -22,7 +22,10 @@ end
 
 #torre
 class Rook < Piece
-
+	def movement_checker(start_position,end_position)
+		puts "Rook start position #{start_position}"
+		puts "Rook end position #{end_position}"
+	end
 end
 
 #reina
